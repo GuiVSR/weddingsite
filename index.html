@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso Casamento</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --ink: #3a3530;
+    --muted: #8a8177;
+    --accent: #b08968;
+    --accent-soft: #e8dccf;
+    --line: #e5dcd1;
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .shell {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    text-align: center;
+    padding: 96px 0 40px;
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  .names {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(40px, 9vw, 68px);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+  }
+
+  .amp {
+    display: block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(24px, 5vw, 34px);
+    color: var(--accent);
+    margin: 14px 0;
+    font-weight: 400;
+  }
+
+  .date-line {
+    font-family: var(--sans);
+    font-size: 15px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 30px;
+  }
+
+  /* ---------- ornament divider ---------- */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 40px auto;
+    color: var(--accent);
+  }
+  .divider::before,
+  .divider::after {
+    content: "";
+    height: 1px;
+    width: 72px;
+    background: var(--line);
+  }
+  .divider span { font-size: 18px; line-height: 1; }
+
+  /* ---------- sections ---------- */
+  section { padding: 36px 0; }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: 0.03em;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .lead {
+    text-align: center;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 24px;
+    font-size: 15px;
+  }
+
+  /* ---------- gift / pix card ---------- */
+  .card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 40px 28px;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(58, 53, 48, 0.04), 0 12px 32px rgba(58, 53, 48, 0.05);
+  }
+
+  .qr-wrap {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .qr-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    background:
+      linear-gradient(45deg, #f3ede5 25%, transparent 25%),
+      linear-gradient(-45deg, #f3ede5 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #f3ede5 75%),
+      linear-gradient(-45deg, transparent 75%, #f3ede5 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    background-color: #faf7f2;
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    user-select: none;
+  }
+
+  .pix-label {
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .pix-key {
+    font-family: var(--serif);
+    font-size: 24px;
+    color: var(--ink);
+    word-break: break-all;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 13px 28px;
+    font-family: var(--sans);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  .btn:hover { background: #9a7353; }
+  .btn:active { transform: translateY(1px); }
+
+  .hint {
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  /* ---------- message ---------- */
+  .message {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  .signature {
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 18px;
+    margin-top: 24px;
+    color: var(--accent);
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    text-align: center;
+    padding: 56px 0 72px;
+    color: var(--muted);
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+  }
+
+  footer .divider { margin: 24px auto; }
+
+  /* ---------- toast ---------- */
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 10;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+    .toast { transition: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="shell">
+
+    <!-- ================= HERO ================= -->
+    <header class="hero">
+      <p class="eyebrow">Você está convidado</p>
+      <h1 class="names">
+        Nome da Noiva
+        <span class="amp">&amp;</span>
+        Nome do Noivo
+      </h1>
+      <p class="date-line">00 de Mês de 0000 &middot; Cidade, UF</p>
+    </header>
+
+    <div class="divider" aria-hidden="true"><span>&#10086;</span></div>
+
+    <!-- ================= MENSAGEM ================= -->
+    <section>
+      <h2>Um recado para você</h2>
+      <p class="lead">
+        Sua presença é o que mais importa. Mas, se quiser nos presentear,
+        preparamos uma forma simples e segura de contribuir com o nosso futuro.
+      </p>
+      <p class="message">
+        &ldquo;O maior presente é ter você ao nosso lado neste dia tão especial.&rdquo;
+      </p>
+      <p class="signature">Com carinho,<br>Nome da Noiva &amp; Nome do Noivo</p>
+    </section>
+
+    <div class="divider" aria-hidden="true"><span>&#10086;</span></div>
+
+    <!-- ================= PRESENTE / PIX ================= -->
+    <section>
+      <h2>Presenteie os noivos</h2>
+      <p class="lead">
+        Aponte a câmera do seu celular para o QR Code abaixo ou copie a chave Pix.
+      </p>
+
+      <div class="card">
+        <div class="qr-wrap">
+          <!-- SUBSTITUIR: troque este bloco pela tag <img> do QR Code real -->
+          <div class="qr-placeholder" role="img" aria-label="Espaço reservado para o QR Code">
+            QR&nbsp;Code
+          </div>
+          <!-- Exemplo quando tiver a imagem:
+          <img src="qrcode.png" alt="QR Code para Pix" width="200" height="200">
+          -->
+        </div>
+
+        <p class="pix-label">Chave Pix</p>
+        <!-- SUBSTITUIR: insira a chave Pix real aqui -->
+        <p class="pix-key" id="pix-key">sua-chave-pix@exemplo.com</p>
+
+        <button class="btn" id="copy-btn" type="button">
+          Copiar chave Pix
+        </button>
+        <p class="hint" id="copy-hint">Ou copie manualmente acima.</p>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><span>&#10086;</span></div>
+
+    <!-- ================= AGRADECIMENTO ================= -->
+    <footer>
+      <p>Obrigado por fazer parte deste momento.</p>
+      <div class="divider" aria-hidden="true"><span>&#10086;</span></div>
+      <p>Nome da Noiva &amp; Nome do Noivo &middot; 00 de Mês de 0000</p>
+    </footer>
+
+  </main>
+
+  <!-- toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">Chave Pix copiada!</div>
+
+  <script>
+    (function () {
+      var btn = document.getElementById("copy-btn");
+      var key = document.getElementById("pix-key");
+      var toast = document.getElementById("toast");
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add("show");
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2200);
+      }
+
+      function fallbackCopy(text) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        return ok;
+      }
+
+      btn.addEventListener("click", function () {
+        var text = key.textContent.trim();
+        var done = function () { showToast("Chave Pix copiada!"); };
+        var fail = function () { showToast("Não foi possível copiar."); };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function () {
+            fallbackCopy(text) ? done() : fail();
+          });
+        } else {
+          fallbackCopy(text) ? done() : fail();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
